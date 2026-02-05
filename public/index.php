@@ -1,4 +1,6 @@
 <?php
+require_once '../app/core/EnvLoader.php';
+\App\Core\EnvLoader::load(__DIR__ . '/../.env');
 ini_set('display_errors',1);
 error_reporting(E_ALL);
 
@@ -15,9 +17,16 @@ switch($url){
         echo "Strona główna";
         break;
 
-    case 'rezerwacja':
-        echo "Fromularz rezerwacji";
-        break;
+   case 'register':
+    include '../views/user/register.php';
+    include '../views/layout.php';
+    break;
+
+    case 'register/store':
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        echo "Dane odebrane! Teraz czas je zapisać.";
+     }
+    break;
     
     case 'admin':
         echo "Witaj w panelu Admina :)";
