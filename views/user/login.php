@@ -1,15 +1,10 @@
 <div class="row justify-content-center mt-5">
-    <div class="col-md-6">
+    <div class="col-md-5">
         <div class="card shadow">
             <div class="card-body">
-                <h3 class="card-title text-center mb-4">Rejestracja</h3>
+                <h3 class="card-title text-center mb-4">Logowanie</h3>
                 
-                <form action="<?php echo BASE_URL; ?>/register/store" method="POST">
-                    <div class="mb-3">
-                        <label class="form-label">Imię i Nazwisko</label>
-                        <input type="text" name="name" class="form-control" required>
-                    </div>
-                    
+                <form action="<?php echo BASE_URL; ?>/login/store" method="POST">
                     <div class="mb-3">
                         <label class="form-label">Email</label>
                         <input type="email" name="email" class="form-control" required>
@@ -20,11 +15,11 @@
                         <input type="password" name="password" class="form-control" required>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary w-100">Zarejestruj się</button>
+                    <button type="submit" class="btn btn-success w-100">Zaloguj się</button>
                 </form>
                 
                 <div class="mt-3 text-center">
-                    <a href="<?php echo BASE_URL; ?>/fryzjer/login">Masz już konto? Zaloguj się</a>
+                    <a href="<?php echo BASE_URL; ?>/register">Nie masz konta? Zarejestruj się</a>
                 </div>
             </div>
         </div>
