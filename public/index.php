@@ -69,7 +69,17 @@ switch ($url) {
         $controller = new \App\Controllers\ServiceController($pdo);
         $controller->index();
         break;
-        
+
+    case 'booking/create':
+        $booking = new \App\Controllers\BookingController($pdo);
+        $booking->create();
+        break;
+
+    case 'booking/store':
+        $booking = new \App\Controllers\BookingController($pdo);
+        $booking->store();
+        break;
+
     case 'admin':
         echo "Witaj w panelu Admina :)";
         break;
