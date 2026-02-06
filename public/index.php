@@ -65,6 +65,11 @@ switch ($url) {
         $auth->logout();
         break; 
 
+    case 'services':
+        $controller = new \App\Controllers\ServiceController($pdo);
+        $controller->index();
+        break;
+        
     case 'admin':
         echo "Witaj w panelu Admina :)";
         break;
