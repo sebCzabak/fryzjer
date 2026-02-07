@@ -10,21 +10,27 @@ class EmailService {
 
         try {
             $mail->isSMTP();
-            $mail->Host       = getenv('SMTP_HOST');
+            $mail->Host       = SMTP_HOST;
             $mail->SMTPAuth   = true;
-            $mail->Username   = getenv('SMTP_USER');
-            $mail->Password   = getenv('SMTP_PASS');
+            $mail->Username   = SMTP_USER;
+            $mail->Password   = SMTP_PASS;
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; 
-            $mail->Port       = getenv('SMTP_PORT');
+            $mail->Port       = SMTP_PORT;
             $mail->CharSet    = 'UTF-8';
+
+            $mail->SMTPOptions = array(
+                'ssl' => array(
+                    'verify_peer' => false,
+                    'verify_peer_name' => false,
+                    'allow_self_signed' => true
+                )
+            );
 
            
             $mail->setFrom('system@fryzjer.local', 'System Rezerwacji');
             
-            
             $mail->addAddress($to);
 
-            
             $mail->isHTML(true);
             $mail->Subject = $subject;
             $mail->Body    = $body;
@@ -32,6 +38,7 @@ class EmailService {
 
             $mail->send();
             return true;
+            
         } catch (Exception $e) {      
             return false;
         }

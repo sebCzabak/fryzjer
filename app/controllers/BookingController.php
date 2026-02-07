@@ -8,7 +8,7 @@ use Service;
 
 class BookingController extends Controller{
     private $reservationModel;
-    private $servceModel;
+    private $serviceModel;
 
 
     public function __construct($pdo){
@@ -16,7 +16,7 @@ class BookingController extends Controller{
         require_once '../app/models/Service.php';
 
         $this->reservationModel = new \Reservation($pdo);
-        $this->servceModel = new \Service($pdo);
+        $this->serviceModel = new \Service($pdo);
     }
 
     public function index(){
@@ -43,7 +43,7 @@ class BookingController extends Controller{
         if(!$serviceId){
             die("Nie wybrano usługi");
         }
-        $service = $this->servceModel->getById($serviceId);
+        $service = $this->serviceModel->getById($serviceId);
 
         $this->view('booking/create',[
             'title'=>'Rezerwacja Wizity',
@@ -51,12 +51,11 @@ class BookingController extends Controller{
         ]);
     }
 
-   public function store() {
+ public function store() {
         if (!isset($_SESSION['user_id'])) {
             die("Musisz być zalogowany!");
         }
 
-        
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $serviceId = $_POST['service_id'];
             $date = $_POST['reservation_date'];
@@ -64,10 +63,19 @@ class BookingController extends Controller{
 
             
             if (strtotime($date) < time()) {
-                die("Nie można rezerwować wizyt w przeszłości! <a href='javascript:history.back()'>Wróć</a>");
+                
+                $service = $this->serviceModel->getById($serviceId);
+
+                
+                $this->view('booking/create', [
+                    'title' => 'Błąd rezerwacji',
+                    'service' => $service,
+                    'error' => 'Nie możesz cofnąć czasu! Wybierz datę z przyszłości.',
+                    'old_date' => $date 
+                ]);
+                return; 
             }
 
-            
             if ($this->reservationModel->create($userId, $serviceId, $date)) {
                 
                 

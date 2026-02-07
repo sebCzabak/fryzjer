@@ -3,7 +3,7 @@
     
     <div class="container-fluid py-5 text-center">
         <h1 class="display-4 fw-bold">Fryzjero</h1>
-        <p class="col-md-8 fs-4 mx-auto">Profesjonalne strzyżenie męskie i stylizacja brody. Zarezerwuj swój termin online w 3 minuty.</p>
+        <p class="col-md-8 fs-4 mx-auto">Profesjonalne strzyżenie męskie i stylizacja brody. <br>Zarezerwuj swój termin online w 3 minuty.</p>
         
         <div class="mt-4">
             <?php if (isset($_SESSION['user_id'])): ?>
