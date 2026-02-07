@@ -40,5 +40,5 @@ System umożliwia klientom przeglądanie usług i rezerwację terminów, a admin
 
 ### 1. Klonowanie repozytorium
 ```bash
-git clone [https://github.com/twoj-nick/fryzjer-mvc.git](https://github.com/twoj-nick/fryzjer-mvc.git)
+git clone [https://github.com/twoj-nick/fryzjer-mvc.git](https://github.com/sebCzabak/fryzjer-mvc.git)
 cd fryzjer-mvc
