@@ -7,7 +7,7 @@
         
         <div class="mt-4">
             <?php if (isset($_SESSION['user_id'])): ?>
-                <a class="btn btn-warning btn-lg px-4 gap-3 fw-bold" href="<?php echo BASE_URL; ?>/booking">
+                <a class="btn btn-warning btn-lg px-4 gap-3 fw-bold" href="<?php echo BASE_URL; ?>/services">
                     📅 Umów wizytę teraz
                 </a>
             <?php else: ?>

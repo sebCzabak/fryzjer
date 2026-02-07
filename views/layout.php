@@ -13,14 +13,16 @@
         <a class="navbar-brand" href="<?php echo BASE_URL; ?>/home">Fryzjero</a>
       <div class="navbar-nav ms-auto"> <a class="nav-link" href="<?php echo BASE_URL; ?>/home">Strona główna</a>
     
-    <?php if (isset($_SESSION['user_id'])): ?>
-        <span class="nav-link text-warning">Witaj, <?php echo $_SESSION['user_name']; ?>!</span>
-        
-        <?php if ($_SESSION['user_role'] === 'admin'): ?>
-            <a class="nav-link" href="<?php echo BASE_URL; ?>/admin">Panel Admina</a>
-        <?php endif; ?>
+   <?php if (isset($_SESSION['user_id'])): ?>
+    <span class="nav-link text-warning">Witaj, <?php echo $_SESSION['user_name']; ?>!</span>
+    
+    <a class="nav-link" href="<?php echo BASE_URL; ?>/booking/index">Moje Rezerwacje</a>
+    
+    <?php if ($_SESSION['user_role'] === 'admin'): ?>
+        <a class="nav-link" href="<?php echo BASE_URL; ?>/admin">Panel Admina</a>
+    <?php endif; ?>
 
-        <a class="nav-link btn btn-outline-light btn-sm mx-2" href="<?php echo BASE_URL; ?>/logout">Wyloguj</a>
+    <a class="nav-link btn btn-outline-light btn-sm mx-2" href="<?php echo BASE_URL; ?>/logout">Wyloguj</a>
     <?php else: ?>
         <a class="nav-link" href="<?php echo BASE_URL; ?>/login">Logowanie</a>
         <a class="nav-link" href="<?php echo BASE_URL; ?>/register">Rejestracja</a>

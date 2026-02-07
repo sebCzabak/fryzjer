@@ -80,8 +80,19 @@ switch ($url) {
         $booking->store();
         break;
 
+    case 'booking/index': 
+        $booking = new \App\Controllers\BookingController($pdo);
+        $booking->index();
+        break;
+        
     case 'admin':
-        echo "Witaj w panelu Admina :)";
+        $admin = new \App\Controllers\AdminController($pdo);
+        $admin->index();
+        break;
+
+    case 'admin/status':
+        $admin = new \App\Controllers\AdminController($pdo);
+        $admin->changeStatus();
         break;
     
     default:

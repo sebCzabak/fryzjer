@@ -22,4 +22,19 @@ class Reservation {
         $stmt->execute([$userId]);
         return $stmt->fetchAll();
     }
+
+    public function getAllWithDetails(){
+        $sql = "SELECT r.*, s.name as service_name, s.price,u.name as user_name, u.email
+        FROM reservations r
+        JOIN services s ON r.service_id = s.id
+        JOIN users u ON r.user_id = u.id
+        ORDER BY r.reservation_date DESC";
+        return $this->db->query($sql)->fetchAll();
+    }
+
+    public function updateStatus($id,$status){
+        $sql = "UPDATE reservations SET status = ? WHERE id = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$status,$id]);
+    }
 }

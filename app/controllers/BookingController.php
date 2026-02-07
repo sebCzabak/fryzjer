@@ -17,6 +17,21 @@ class BookingController extends Controller{
         $this->reservationModel = new \Reservation($pdo);
         $this->servceModel = new \Service($pdo);
     }
+
+    public function index(){
+        if (!isset($_SESSION['user_id'])){
+            header("Location: " . BASE_URL . "/login");
+            exit;
+        }
+
+        $reservations = $this->reservationModel->getByUserId($_SESSION['user_id']);
+
+        $this->view('booking/index',[
+            'title'=>'Moje Rezerwacje',
+            'reservations'=> $reservations
+        ]);
+    }
+
     public function create(){
         if (!isset($_SESSION['user_id'])){
             header("Location: ". BASE_URL . "/login");
@@ -56,4 +71,6 @@ class BookingController extends Controller{
             }
         }
     }
+
+    
 }
