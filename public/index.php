@@ -4,6 +4,10 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 session_start();
 
+if (file_exists('../vendor/autoload.php')) {
+    require_once '../vendor/autoload.php';
+}
+
 spl_autoload_register(function ($class) {
     $prefix = 'App\\';
     $base_dir = __DIR__ . '/../app/';
